@@ -1,0 +1,63 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+.success {
+  background-color: #008000; }
+
+.warning {
+  background-color: orange; }
+
+.error {
+  background-color: #ff0000; }
+
+@font-face {
+  font-family: SegieUI;
+  src: url(../kontur_tff.ttf); }
+body {
+  font-family: SegieUI, "Times New Roman", cursive; }
+
+table {
+  display: table-cell;
+  width: 33.33333%; }
+
+.container {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.actionBlock {
+  float: left;
+  display: block;
+  margin-right: 10.1484%;
+  width: 26.56773%;
+  background-color: #808080; }
+  .actionBlock:last-child {
+    margin-right: 0; }
+
+.matrixBlock {
+  float: left;
+  display: block;
+  margin-right: 10.1484%;
+  width: 63.28387%; }
+  .matrixBlock:last-child {
+    margin-right: 0; }
+
+.row {
+  display: block; }
+  .row::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+/*# sourceMappingURL=kontur.css.map */

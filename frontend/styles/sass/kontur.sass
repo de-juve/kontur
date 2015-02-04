@@ -1,0 +1,33 @@
+@import "../bourbon/bourbon"
+@import "../neat/neat"
+@import "variables"
+
+.success
+  background-color: $green
+.warning
+  background-color: $orange
+.error
+  background-color: $red
+
+@font-face
+  font-family: SegieUI
+  src: url(../kontur_tff.ttf)
+
+body
+  font-family: SegieUI, "Times New Roman", cursive
+
+table
+  @include span-columns(1 of 3, table)
+
+.container
+  @include outer-container
+
+.actionBlock
+  @include span-columns(1 of 3)
+  background-color: $grey
+
+.matrixBlock
+  @include span-columns(2 of 3)
+
+.row
+  @include row()

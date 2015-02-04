@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container" ng-app="konturApp" ng-controller="matrixController as vm">
+
+    <div class="actionBlock" ng-class="{
+    'success': vm.style.actionBlock.success,
+     'warning': vm.style.actionBlock.warning,
+     'error': vm.style.actionBlock.error
+     }">
+        <div>
+            <button ng-click="vm.mulp()">Умножить матрицы</button>
+        </div>
+        <div>
+            <button ng-click="vm.clean()">Очистить матрицы</button>
+        </div>
+        <div>
+            <button ng-click="vm.replace()">Поменять матрицы местами</button>
+        </div>
+        <div>
+            <input type="radio" ng-model="vm.model.selectMatrix" value="a">Матрица A</input>
+            <input type="radio" ng-model="vm.model.selectMatrix" value="b">Матрица B</input>
+        </div>
+        <div>
+            <button ng-click="vm.addRow()">Добавить</button>
+            <button ng-click="vm.removeRow()">Удалить</button>
+            <span>строку</span>
+        </div>
+        <div>
+            <button ng-click="vm.addCol()">Добавить</button>
+            <button ng-click="vm.removeCol()">Удалить</button>
+            <span>столбец</span>
+        </div>
+        <div ng-show="vm.model.showWarning">
+            <div ng-bind="vm.model.warning"></div>
+        </div>
+        <div ng-show="vm.model.showError">
+            <div ng-bind="vm.model.error"></div>
+        </div>
+    </div>
+
+    <div class="matrixBlock">
+        <div class="row">
+            <div ng-repeat="val in vm.getNumber(vm.model.matrix.c.values()) track by $index">
+                <input class="matrix_cell" type="text" readonly ng-model="vm.model.matrix.c.value[$index]"
+                       placeholder="{{vm.model.matrix.c.name}}{{vm.getRowId($index+1,vm.model.matrix.c.cols)}},{{vm.getColId($index+1,vm.model.matrix.c.cols)}}">
+            </div>
+
+
+           <!-- <table>
+                <tr ng-repeat="row in vm.getNumber(vm.model.matrix.c.rows) track by $index">
+                    <td ng-repeat="col in vm.getNumber(vm.model.matrix.c.cols) track by $index">
+                        <input class="matrix_cell" type="text" readonly ng-model="vm.model.matrix.c.value[$parent.$index * vm.model.matrix.c.cols + $index]"
+                               placeholder="{{vm.model.matrix.c.name}}{{$parent.$index+1}},{{$index+1}}">
+                    </td>
+                </tr>
+            </table>-->
+
+            <table>
+                <tr ng-repeat="row in vm.getNumber(vm.model.matrix.a.rows) track by $index">
+                    <td ng-repeat="col in vm.getNumber(vm.model.matrix.a.cols) track by $index">
+                        <input class="matrix_cell" type="number" min="0" max="10" ng-model="vm.model.matrix.a.value[$parent.$index * vm.model.matrix.a.cols + $index]" placeholder="{{vm.model.matrix.a.name}}{{$parent.$index+1}},{{$index+1}}">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <table>
+                <tr ng-repeat="row in vm.getNumber(vm.model.matrix.b.rows) track by $index">
+                    <td ng-repeat="col in vm.getNumber(vm.model.matrix.b.cols) track by $index">
+                        <input class="matrix_cell" type="number" min="0" max="10" ng-model="vm.model.matrix.b.value[$parent.$index * vm.model.matrix.b.cols + $index]" placeholder="{{vm.model.matrix.b.name}}{{$parent.$index+1}},{{$index+1}}">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="styles/angular-csp.css">
+<link rel="stylesheet" type="text/css" href="styles/sass/kontur.css">
+<script src="scripts/vendor.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
